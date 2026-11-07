@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "POD Engineering Job v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "jobId",
+    "designId",
+    "revision",
+    "kind",
+    "units",
+    "parameters"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "jobId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "designId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "kind": {
+      "enum": [
+        "cad_generation",
+        "structural_fea",
+        "hydraulic_calculation",
+        "drawing_export"
+      ]
+    },
+    "units": {
+      "const": "mm_kg_N_MPa"
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "number",
+          "integer",
+          "string",
+          "boolean"
+        ]
+      }
+    },
+    "requestedBy": {
+      "type": "string"
+    },
+    "inputChecksum": {
+      "type": "string"
+    }
+  }
+}
